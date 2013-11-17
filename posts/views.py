@@ -58,7 +58,7 @@ def login_view(request):
         else:
             error = 'К сожалению, ваш аккаунт заблокирован. '
     else:
-        error = 'Введенные данные некорректны.'
+        error = 'Неверные данные.'
 
     template = loader.get_template('logerror.html')
     context = Context({
