@@ -11,7 +11,6 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from bin.vlogin import *
 
 def detail(request, post_id):
     template = loader.get_template('posts/base_post.html')
