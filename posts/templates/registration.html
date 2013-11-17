@@ -1,0 +1,19 @@
+<title> Дежурим, 11А! </title>
+
+<form action="{% url 'checkreg' %}" method="post">
+    <p>Логин: <input type="text" name="username" id="choice{{ forloop.counter }}" checked />
+    <label for="choice{{ forloop.counter }}"></label><br /></p>
+    <p>Пароль: <input type="password" name="password" id="choice{{ forloop.counter }}" checked />
+    <label for="choice{{ forloop.counter }}"></label><br /></p>
+    <p>Email: <input type="text" name="email" id="choice{{ forloop.counter }}" checked />
+    <label for="choice{{ forloop.counter }}"></label><br /></p>
+    <p>Имя: <input type="text" name="first_name" id="choice{{ forloop.counter }}" checked />
+    <label for="choice{{ forloop.counter }}"></label><br /></p>
+    <p>Фамилия: <input type="text" name="last_name" id="choice{{ forloop.counter }}" checked />
+    <label for="choice{{ forloop.counter }}"></label><br /></p>
+    
+
+<input type="submit" value="Зарегистрироваться" />
+{% csrf_token %}
+
+</form>

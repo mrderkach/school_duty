@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="{{ LANGUAGE_CODE|default:"ru-ru" }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+<head>
+<title>Дежурство</title>
+{% block extrastyle %}{% endblock %}
+
+<body class="{% if is_popup %}popup {% endif %}{% block bodyclass %}{% endblock %}">
+
+<!-- Container -->
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+        {% block branding %}{% endblock %}
+        </div>
+        {% if user.is_active %}
+        <div id="user-tools">
+            Добро пожаловать,
+            <strong>{% filter force_escape %}{% firstof user.get_short_name user.get_username %}{% endfilter %}</strong>.
+            {% block userlinks %}
+                <!--{% if user.has_usable_password %}-->
+                <!--<a href="{% url 'admin:password_change' %}">Изменить пароль</a> /-->
+                <!--{% endif %}-->
+                <a href="{% url 'logout' %}">Выйти</a>
+            {% endblock %}
+        </div>
+        {% endif %}
+        {% block nav-global %}{% endblock %}
+    </div>
+    <!-- END Header -->
+    {% block breadcrumbs %}
+    {% endblock %}
+
+    <!-- Content -->
+    <div id="content" class="{% block coltype %}colM{% endblock %}">
+        {% block pretitle %}{% endblock %}
+        {% block content_title %}{% if title %}<h1>{{ title }}</h1>{% endif %}{% endblock %}
+        {% block content %}
+        {% block object-tools %}{% endblock %}
+        {{ content }}
+        {% endblock %}
+        {% block sidebar %}{% endblock %}
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+
+    {% block footer %}<div id="footer">Денис Деркач, Москва, 2013</div>{% endblock %}
+</div>
+<!-- END Container -->
+
+</body>
+</html>
